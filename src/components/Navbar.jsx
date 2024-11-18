@@ -20,7 +20,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className="bg-base-100">
+        <div className="bg-base-200">
             <div className="navbar max-w-7xl mx-auto px-3 py-3">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -42,7 +42,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end lg:flex gap-4">
                     <img src={userIcon} alt="" />
-                    <button className="btn btn-neutral">Login</button>
+                    <Link to="/auth/login" className="btn btn-neutral">Login</Link>
                 </div>
             </div>
         </div>

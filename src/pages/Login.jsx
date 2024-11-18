@@ -27,31 +27,31 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-screen flex justify-center items-center ">
-            <div className="card bg-base-100 w-full max-w-xl shrink-0 shadow-2xl rounded-none p-8">
+        <div className="md:min-h-[calc(100vh-200px)] flex justify-center items-center ">
+            <div className="card bg-base-100 w-full max-w-xl shrink-0 shadow-2xl p-8">
                 <h2 className="text-3xl font-semibold text-center pt-6">Login your account</h2>
                 <form onSubmit={handleSubmit} className="card-body">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" name="email" placeholder="Enter your email" className="input input-bordered rounded-none bg-[#F3F3F3]" required />
+                        <input type="email" name="email" placeholder="Enter your email" className="input input-bordered bg-[#F3F3F3]" required />
                     </div>
 
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input type="password" name="password" placeholder="Enter your password" className="input input-bordered rounded-none bg-[#F3F3F3]" required />
+                        <input type="password" name="password" placeholder="Enter your password" className="input input-bordered bg-[#F3F3F3]" required />
                         {error.login && <label className="label text-red-600 text-sm">{error.login}</label>}
                         <label className="label">
-                            <a href="#" className="label-text-alt link link-hover">
+                            <Link to="#" className="label-text-alt link link-hover">
                                 Forgot password?
-                            </a>
+                            </Link>
                         </label>
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn text-white text-base btn-neutral rounded-none">Login</button>
+                        <button className="btn text-white text-base btn-neutral">Login</button>
                     </div>
                 </form>
                 <p className="text-center text-gray-500 font-semibold">
