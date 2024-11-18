@@ -1,7 +1,10 @@
 import { Link, NavLink } from 'react-router-dom';
 import userIcon from "../assets/user.png"
+import { useContext } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Navbar = () => {
+    const {user} = useContext(AuthContext)
     const links = (
         <>
             <li className="hover:text-orange-300">
@@ -41,8 +44,13 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal px-1 text-gray-600 gap-8 font-semibold">{links}</ul>
                 </div>
                 <div className="navbar-end lg:flex gap-4">
+
+                    <div className='font-semibold'>{user.name}</div>
+
                     <img src={userIcon} alt="" />
-                    <Link to="/auth/login" className="btn btn-neutral">Login</Link>
+                    <Link to="/auth/login" className="btn btn-neutral">
+                        Login
+                    </Link>
                 </div>
             </div>
         </div>
