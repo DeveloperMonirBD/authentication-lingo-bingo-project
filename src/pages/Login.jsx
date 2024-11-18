@@ -1,11 +1,14 @@
 import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
+import logo from '../../src/assets/Lingo Bingo1.jpg';
 
 const Login = () => {
     const { userLogin, setUser } = useContext(AuthContext);
     const [error, setError] = useState({});
+
     const location = useLocation();
+    console.log(location)
     const navigate = useNavigate();
 
     const handleSubmit = e => {
@@ -14,12 +17,14 @@ const Login = () => {
         // get form Data
         const email = form.get('email');
         const password = form.get('password');
+        console.log(email, password)
 
         userLogin(email, password)
             .then(result => {
                 const user = result.user;
                 setUser(user);
                 navigate(location?.state ? location.state : '/');
+                alert('Congratulation. you are sign in')
             })
             .catch(err => {
                 setError({ ...error, login: err.code });
@@ -28,7 +33,10 @@ const Login = () => {
 
     return (
         <div className="md:min-h-[calc(100vh-200px)] flex justify-center items-center ">
-            <div className="card bg-base-100 w-full max-w-xl shrink-0 shadow-2xl p-8">
+            <div className="card bg-base-100 w-full max-w-2xl shrink-0 shadow-2xl p-8">
+                <div className=" flex justify-center">
+                    <img className="w-32 rounded-xl shadow-xl border p-1" src={logo} alt="" />
+                </div>
                 <h2 className="text-3xl font-semibold text-center pt-6">Login your account</h2>
                 <form onSubmit={handleSubmit} className="card-body">
                     <div className="form-control">
@@ -43,7 +51,9 @@ const Login = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input type="password" name="password" placeholder="Enter your password" className="input input-bordered bg-[#F3F3F3]" required />
+
                         {error.login && <label className="label text-red-600 text-sm">{error.login}</label>}
+                        
                         <label className="label">
                             <Link to="#" className="label-text-alt link link-hover">
                                 Forgot password?

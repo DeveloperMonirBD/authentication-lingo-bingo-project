@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Navbar = () => {
-    const {user} = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext);
     const links = (
         <>
             <li className="hover:text-orange-300">
@@ -15,6 +15,9 @@ const Navbar = () => {
             </li>
             <li className="hover:text-orange-300">
                 <NavLink to="/tutorial">Tutorials</NavLink>
+            </li>
+            <li className="hover:text-orange-300">
+                <NavLink to="/myProfile">My-Profile</NavLink>
             </li>
             <li className="hover:text-orange-300">
                 <NavLink to="/aboutUs">About-Us</NavLink>
@@ -41,16 +44,29 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 text-gray-600 gap-8 font-semibold">{links}</ul>
+                    <ul className="menu menu-horizontal px-1 text-gray-600 gap-2 font-semibold">{links}</ul>
                 </div>
-                <div className="navbar-end lg:flex gap-4">
+                <div className="navbar-end hidden md:flex gap-3">
 
-                    <div className='font-semibold'>{user.name}</div>
+                    <div className="font-semibold">
+                        {user && user?.email ? <div className='flex items-center gap-3'>
+                            <p>{user.displayName}</p>
+                            <img className='w-14 h-14 rounded-full object-cover object-center' src={user?.photoURL} alt="" />
+                        </div> : <img src={userIcon} alt="" />
+                        }
+                    </div>
 
-                    <img src={userIcon} alt="" />
-                    <Link to="/auth/login" className="btn btn-neutral">
-                        Login
-                    </Link>
+                    
+
+                    {user && user?.email ? (
+                        <button onClick={logOut} className="btn btn-neutral btn-outline font-bold">
+                            Log out
+                        </button>
+                    ) : (
+                        <Link to="/auth/login" className="btn btn-neutral font-bold">
+                            Login
+                        </Link>
+                    )}
                 </div>
             </div>
         </div>

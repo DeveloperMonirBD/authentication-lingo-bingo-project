@@ -8,6 +8,8 @@ import ErrorElement from "../pages/ErrorElement";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import PrivetRoute from "./PrivetRoute";
+import MyProfile from "../pages/MyProfile";
 
 const routes = createBrowserRouter([
     {
@@ -21,11 +23,27 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/startLearning',
-                element: <StartLearning />
+                element: (
+                    <PrivetRoute>
+                        <StartLearning />
+                    </PrivetRoute>
+                )
             },
             {
                 path: '/tutorial',
-                element: <Tutorials />
+                element: (
+                    <PrivetRoute>
+                        <Tutorials />
+                    </PrivetRoute>
+                )
+            },
+            {
+                path: '/myProfile',
+                element: (
+                    <PrivetRoute>
+                        <MyProfile />
+                    </PrivetRoute>
+                )
             },
             {
                 path: '/aboutUs',
@@ -36,13 +54,13 @@ const routes = createBrowserRouter([
                 element: <AuthLayout />,
                 children: [
                     {
-                        path: "/auth/login",
+                        path: '/auth/login',
                         element: <Login />
                     },
                     {
-                        path: "/auth/register",
+                        path: '/auth/register',
                         element: <Register />
-                    },
+                    }
                 ]
             }
         ]

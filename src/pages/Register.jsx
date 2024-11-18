@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
+import logo from '../../src/assets/Lingo Bingo1.jpg';
 
 const Register = () => {
     const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
@@ -12,13 +13,18 @@ const Register = () => {
         // get form data
         const form = new FormData(e.target);
         const name = form.get('name');
+
         if (name.length < 5) {
-            setError({ ...error, name: 'Must be more than 5 charrecter length' });
+            setError({ ...error, name: 'Must be more than 5 character length' });
             return;
         }
+
         const email = form.get('email');
         const photo = form.get('photo');
         const password = form.get('password');
+
+        console.log(name, email, photo, password)
+
 
         createNewUser(email, password)
             .then(result => {
@@ -26,7 +32,7 @@ const Register = () => {
                 setUser(user);
                 updateUserProfile({ displayName: name, photoURL: photo })
                     .then(() => {
-                        navigate('/');
+                        navigate('/myProfile');
                     })
                     .catch(err => {
                         console.log(err);
@@ -40,8 +46,11 @@ const Register = () => {
     };
 
     return (
-        <div className="md:min-h-[calc(100vh-100px)] flex justify-center items-center mb-10">
-            <div className="card bg-base-100 w-full max-w-xl shrink-0 shadow-2xl p-8">
+        <div className="md:min-h-screen flex justify-center items-center mb-10">
+            <div className="card bg-base-100 w-full max-w-3xl shrink-0 shadow-2xl p-8">
+                <div className=" flex justify-center">
+                    <img className="w-32 rounded-xl shadow-xl border p-1" src={logo} alt="" />
+                </div>
                 <h2 className="text-3xl font-semibold text-center pt-6">Register your account</h2>
                 <form onSubmit={handleSubmit} className="card-body">
                     <div className="form-control">
