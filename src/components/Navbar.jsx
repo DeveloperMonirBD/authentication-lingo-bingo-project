@@ -7,27 +7,27 @@ const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const links = (
         <>
-            <li className="hover:text-orange-300">
+            <li className="hover:text-brandPrimary">
                 <NavLink to="/">Home</NavLink>
             </li>
-            <li className="hover:text-orange-300">
+            <li className="hover:text-brandPrimary">
                 <NavLink to="/startLearning">Start-learning</NavLink>
             </li>
-            <li className="hover:text-orange-300">
+            <li className="hover:text-brandPrimary">
                 <NavLink to="/tutorial">Tutorials</NavLink>
             </li>
-            <li className="hover:text-orange-300">
+            <li className="hover:text-brandPrimary">
                 <NavLink to="/myProfile">My-Profile</NavLink>
             </li>
-            <li className="hover:text-orange-300">
+            <li className="hover:text-brandPrimary">
                 <NavLink to="/aboutUs">About-Us</NavLink>
             </li>
         </>
     );
 
     return (
-        <div className="bg-base-200">
-            <div className="navbar max-w-7xl mx-auto px-3 py-3">
+        <div className="">
+            <div className="navbar container mx-auto px-3 py-3">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -39,7 +39,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <Link to="/" className="text-xl font-extrabold">
+                    <Link to="/" className="text-2xl font-extrabold text-brandPrimary">
                         Lingo Bingo
                     </Link>
                 </div>
@@ -47,23 +47,23 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal px-1 text-gray-600 gap-2 font-semibold">{links}</ul>
                 </div>
                 <div className="navbar-end hidden md:flex gap-3">
-
                     <div className="">
-                        {user && user?.email ? <div className='flex items-center gap-2'>
-                            <p>Welcome, {user.displayName}</p>
-                            <img className='w-14 h-14 rounded-full object-cover object-center' src={user?.photoURL} alt="" />
-                        </div> : <img src={userIcon} alt="" />
-                        }
+                        {user && user?.email ? (
+                            <div className="flex items-center gap-2">
+                                <p>Welcome, {user.displayName}</p>
+                                <img className="w-14 h-14 rounded-full object-cover object-center" src={user?.photoURL} alt="" />
+                            </div>
+                        ) : (
+                            <img src={userIcon} alt="" />
+                        )}
                     </div>
-
-                    
 
                     {user && user?.email ? (
                         <button onClick={logOut} className="btn btn-neutral btn-outline font-bold">
                             Log out
                         </button>
                     ) : (
-                        <Link to="/auth/login" className="btn btn-neutral font-bold">
+                        <Link to="/auth/login" className="btn button-primary font-bold">
                             Login
                         </Link>
                     )}

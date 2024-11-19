@@ -6,19 +6,19 @@ const MainLayout = () => {
     return (
         <div className="font-poppins">
             <header>
-            {/* Navbar */}
+                {/* Navbar */}
                 <Navbar />
             </header>
 
-            <main>
-            {/* Dunamic Section  */}
-                <div className="min-h-[calc(100vh-232px)] max-w-7xl mx-auto px-3 py-12">
+            <main className="bg-neutralSilver">
+                {/* Dynamic Section  */}
+                <div className="min-h-[calc(100vh-232px)] container mx-auto px-3 py-12">
                     <Outlet />
                 </div>
             </main>
 
             <footer>
-            {/* Footer  */}
+                {/* Footer  */}
                 <Footer />
             </footer>
         </div>
