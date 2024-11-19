@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+
 import { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
 
@@ -10,16 +11,26 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [errorMessage, setErrorMessage] = useState('');
+     const [success, setSuccess] = useState(false);
 
     const createNewUser = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
+        return createUserWithEmailAndPassword(auth, email, password).then(result => {
+            console.log(result.user)
+            setSuccess(true)
+        })
+            .catch(error => {
+                setErrorMessage(error.message);
+                setSuccess(false)
+        })
     };
+    
 
     const userLogin = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
-    };
+    };    
 
     const logOut = () => {
         setLoading(true);
@@ -37,7 +48,12 @@ const AuthProvider = ({ children }) => {
         userLogin,
         logOut,
         loading,
-        updateUserProfile
+        updateUserProfile,
+        auth,
+        errorMessage,
+        setErrorMessage,
+        success,
+        setSuccess
     };
 
     useEffect(() => {
