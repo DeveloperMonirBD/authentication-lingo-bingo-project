@@ -55,6 +55,7 @@ const Register = () => {
         createNewUser(email, password)
             .then(result => {
                 const user = result.user;
+                setSuccess(true);
                 setUser(user);
                 updateUserProfile({ displayName: name, photoURL: photo })
                     .then(() => {
@@ -67,6 +68,7 @@ const Register = () => {
             .catch(error => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                 setSuccess(false);
                 console.log(errorCode, errorMessage);
             });
     };

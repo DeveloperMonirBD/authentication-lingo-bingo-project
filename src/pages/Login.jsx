@@ -1,5 +1,5 @@
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { useContext, useState } from 'react';
+import { GoogleAuthProvider, sendPasswordResetEmail, signInWithPopup } from 'firebase/auth';
+import { useContext, useRef, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../src/assets/Lingo Bingo1.jpg';
@@ -11,6 +11,7 @@ const Login = () => {
     const googleProvider = new GoogleAuthProvider();
     const [error, setError] = useState({});
     const [showPassword, setShowPassword] = useState(false);
+    const emailRef = useRef()
 
     const location = useLocation();
     // console.log(location)
@@ -37,9 +38,31 @@ const Login = () => {
     };
 
     const handleGoogleLogin = () => {
-        signInWithPopup(auth, googleProvider);
+        signInWithPopup(auth, googleProvider)
+            .then(() => {
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        
         alert('Congratulation. you are sign in');
     };
+
+    const handleForgetPassword = () => {
+        console.log('Give me email password', emailRef.current.value);
+        const email = emailRef.current.value;
+
+        if (!email) {
+            console.log('Please provide a valid email address')
+        } else {
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                alert('Password reset email sent, Please check your email')
+            })
+        }
+    }
+    
 
     return (
         <div className="md:min-h-[calc(100vh-200px)] flex justify-center items-center ">
@@ -53,7 +76,7 @@ const Login = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" name="email" placeholder="Enter your email" className="input input-bordered bg-[#F3F3F3]" required />
+                        <input type="email" name="email" ref={emailRef} placeholder="Enter your email" className="input input-bordered bg-[#F3F3F3]" required />
                     </div>
 
                     <div className="form-control relative">
@@ -68,7 +91,7 @@ const Login = () => {
 
                         {error.login && <label className="label text-red-600 text-sm">{error.login}</label>}
 
-                        <label className="label">
+                        <label onClick={handleForgetPassword} className="label">
                             <Link to="#" className="label-text-alt link link-hover">
                                 Forgot password?
                             </Link>
