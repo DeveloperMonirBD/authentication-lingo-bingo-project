@@ -1,9 +1,10 @@
+import LetsLearnPage from "./LetsLearnPage";
 
 
 const StartLearning = () => {
     return (
         <div>
-            This is Start learning page
+            <LetsLearnPage />
         </div>
     );
 };

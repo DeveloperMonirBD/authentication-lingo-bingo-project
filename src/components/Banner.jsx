@@ -1,6 +1,7 @@
 import { Carousel } from 'flowbite-react';
 import banner1 from '../assets/hero-graphics.svg';
 import banner2 from '../assets/hero1.png';
+import banner3 from '../assets/frame.png';
 
 const Banner = () => {
     return (
@@ -37,7 +38,7 @@ const Banner = () => {
                 {/* banner3  */}
                 <div className="md:my-8 py-12 flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:px-12">
                     <div>
-                        <img src={banner1} alt="" />
+                        <img src={banner3} alt="" />
                     </div>
                     {/* hero text  */}
                     <div className="md:w-2/3">

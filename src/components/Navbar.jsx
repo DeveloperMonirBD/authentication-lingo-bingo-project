@@ -59,7 +59,7 @@ const Navbar = () => {
                     </div>
 
                     {user && user?.email ? (
-                        <button onClick={logOut} className="btn btn-neutral btn-outline font-bold">
+                        <button onClick={logOut} className="btn button-primary font-bold">
                             Log out
                         </button>
                     ) : (

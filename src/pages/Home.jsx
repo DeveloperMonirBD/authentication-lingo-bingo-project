@@ -8,8 +8,8 @@ const Home = () => {
     return (
         <div className="">
             <Banner />
-            <CountUpComponent />
             <About />
+            <CountUpComponent />
             <Service />
         </div>
     );
