@@ -11,8 +11,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [errorMessage, setErrorMessage] = useState('');
-     const [success, setSuccess] = useState(false);
+
 
     const createNewUser = (email, password) => {
         setLoading(true);
@@ -43,10 +42,6 @@ const AuthProvider = ({ children }) => {
         loading,
         updateUserProfile,
         auth,
-        errorMessage,
-        setErrorMessage,
-        success,
-        setSuccess
     };
 
     useEffect(() => {

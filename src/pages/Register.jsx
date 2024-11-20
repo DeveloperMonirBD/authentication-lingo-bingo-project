@@ -1,17 +1,19 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import google from '../../src/assets/google.png';
 import logo from '../../src/assets/Lingo Bingo1.jpg';
 import { AuthContext } from '../provider/AuthProvider';
-import google from '../../src/assets/google.png';
 
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Register = () => {
-    const { createNewUser, setUser, updateUserProfile, auth, errorMessage, setErrorMessage, success, setSuccess } = useContext(AuthContext);
+    const { createNewUser, setUser, updateUserProfile, auth } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
     const [error, setError] = useState({});
+    const [success, setSuccess] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = e => {
@@ -35,8 +37,9 @@ const Register = () => {
         // reset error and status
         setErrorMessage('');
         setSuccess(false);
+
         if (!terms) {
-            setErrorMessage('Please accept out terms and condition.');
+            setErrorMessage('Please accept our terms and condition.');
             return;
         }
 
@@ -60,7 +63,6 @@ const Register = () => {
                 updateUserProfile({ displayName: name, photoURL: photo })
                     .then(() => {
                         navigate(location?.state ? location.state : '/');
-                        alert('Congratulation. you are sign in');
                     })
                     .catch(err => {
                         console.log(err);
@@ -69,7 +71,7 @@ const Register = () => {
             .catch(error => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                 setSuccess(false);
+                setSuccess(false);
                 console.log(errorCode, errorMessage);
             });
     };
@@ -83,6 +85,10 @@ const Register = () => {
             .catch(err => {
                 console.log(err);
             });
+    };
+
+    const handleShowPassword = () => {
+        setShowPassword(!showPassword);
     };
 
     return (
@@ -121,7 +127,7 @@ const Register = () => {
                         </label>
                         <input type={showPassword ? 'text' : 'password'} name="password" placeholder="Enter your password" className="input input-bordered bg-[#F3F3F3]" required />
 
-                        <button onClick={() => setShowPassword(!showPassword)} className="btn btn-xs absolute right-3 text-lg top-12">
+                        <button type="button" onClick={handleShowPassword} className="btn btn-xs absolute right-3 text-lg top-12">
                             {showPassword ? <FaEye /> : <FaEyeSlash />}
                         </button>
                     </div>
@@ -142,11 +148,10 @@ const Register = () => {
                     {success && <p className="text-green-500 text-center mt-3">Sign up is Successful.</p>}
 
                     <div className=" form-control mt-6 flex justify-center gap-3">
-                        <button onClick={handleGoogleLogin} className="btn text-base btn-neutral ">
+                        <button type="button" onClick={handleGoogleLogin} className="btn text-base btn-neutral ">
                             <img className="w-6 mr-1" src={google} alt="" /> Google Login
                         </button>
                     </div>
-
                 </form>
                 <p className="text-center text-gray-500 font-semibold">
                     <span>Already Have An Account ? </span>

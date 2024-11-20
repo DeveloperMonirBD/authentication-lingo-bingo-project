@@ -11,7 +11,7 @@ const Login = () => {
     const googleProvider = new GoogleAuthProvider();
     const [error, setError] = useState({});
     const [showPassword, setShowPassword] = useState(false);
-    const emailRef = useRef()
+    const emailRef = useRef();
 
     const location = useLocation();
     // console.log(location)
@@ -45,7 +45,7 @@ const Login = () => {
             .catch(err => {
                 console.log(err);
             });
-        
+
         alert('Congratulation. you are sign in');
     };
 
@@ -54,15 +54,13 @@ const Login = () => {
         const email = emailRef.current.value;
 
         if (!email) {
-            console.log('Please provide a valid email address')
+            console.log('Please provide a valid email address');
         } else {
-            sendPasswordResetEmail(auth, email)
-                .then(() => {
-                alert('Password reset email sent, Please check your email')
-            })
+            sendPasswordResetEmail(auth, email).then(() => {
+                alert('Password reset email sent, Please check your email');
+            });
         }
-    }
-    
+    };
 
     return (
         <div className="md:min-h-[calc(100vh-200px)] flex justify-center items-center ">
@@ -85,7 +83,7 @@ const Login = () => {
                         </label>
 
                         <input type={showPassword ? 'text' : 'password'} name="password" placeholder="Enter your password" className="input input-bordered bg-[#F3F3F3]" required />
-                        <button onClick={() => setShowPassword(!showPassword)} className="btn btn-xs absolute right-3 text-lg top-12">
+                        <button type="button" onClick={() => setShowPassword(!showPassword)} className="btn btn-xs absolute right-3 text-lg top-12">
                             {showPassword ? <FaEye /> : <FaEyeSlash />}
                         </button>
 
@@ -102,7 +100,7 @@ const Login = () => {
                     </div>
 
                     <div className=" form-control mt-6 flex justify-center gap-3">
-                        <button onClick={handleGoogleLogin} className="btn text-base btn-neutral ">
+                        <button type="button" onClick={handleGoogleLogin} className="btn text-base btn-neutral ">
                             <img className="w-6 mr-1" src={google} alt="" /> Google Login
                         </button>
                     </div>
