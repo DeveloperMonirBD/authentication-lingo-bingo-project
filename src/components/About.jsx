@@ -8,7 +8,7 @@ import { FaLanguage, FaLightbulb, FaRocket } from 'react-icons/fa';
 
 const About = () => {
     return (
-        <section className=" mt-20">
+        <section className=" mt-20 px-3">
             <div className="container mx-auto text-center ">
                 <motion.div variants={fadeIn('up', 0.2)} initial="hidden" whileInView={'show'} viewport={{ once: false, amount: 0.7 }}>
                     <h2 className="text-4xl font-extrabold text-brandPrimary mb-8 ">About Lingo Bingo</h2>

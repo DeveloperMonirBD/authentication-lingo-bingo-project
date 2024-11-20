@@ -37,8 +37,8 @@ const LetsLearnPage = () => {
                     Learn the Alphabet
                 </motion.h2>
 
-                <motion.div variants={fadeIn('right', 0.5)} initial="hidden" whileInView={'show'} viewport={{ once: false, amount: 0.4 }}>
-                    <ReactPlayer url="https://youtu.be/lZMMqMvY1d0?si=QgIlckQ9T1eYhQOy" controls={true} className="rounded-lg overflow-hidden" />
+                <motion.div variants={fadeIn('right', 0.5)} initial="hidden" whileInView={'show'} viewport={{ once: false, amount: 0.4 }} className="player max-w-[500px]" >
+                    <ReactPlayer width="100%" height="100%" controls url="https://youtu.be/lZMMqMvY1d0?si=QgIlckQ9T1eYhQOy" />
                 </motion.div>
                 <Link to="/tutorial" className="btn bg-brandPrimary mt-6 text-white hover:text-black">
                     View more

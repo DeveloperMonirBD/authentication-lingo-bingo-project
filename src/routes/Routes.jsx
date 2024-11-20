@@ -12,6 +12,7 @@ import Register from '../pages/Register';
 import PrivetRoute from './PrivetRoute';
 import MyProfile from '../pages/MyProfile';
 import LessonPage from '../pages/LessonPage';
+import ProfileUpdate from '../pages/ProfileUpdate';
 
 const routes = createBrowserRouter([
     {
@@ -70,6 +71,10 @@ const routes = createBrowserRouter([
                     {
                         path: '/auth/register',
                         element: <Register />
+                    },
+                    {
+                        path: '/auth/profileUpdate',
+                        element: <ProfileUpdate />
                     }
                 ]
             }
