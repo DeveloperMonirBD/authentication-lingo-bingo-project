@@ -59,7 +59,8 @@ const Register = () => {
                 setUser(user);
                 updateUserProfile({ displayName: name, photoURL: photo })
                     .then(() => {
-                        navigate('/myProfile');
+                        navigate(location?.state ? location.state : '/');
+                        alert('Congratulation. you are sign in');
                     })
                     .catch(err => {
                         console.log(err);
@@ -74,8 +75,14 @@ const Register = () => {
     };
 
     const handleGoogleLogin = () => {
-        signInWithPopup(auth, googleProvider);
-        alert('Congratulation. you are sign in');
+        signInWithPopup(auth, googleProvider)
+            .then(() => {
+                navigate(location?.state ? location.state : '/');
+                alert('Congratulation. you are sign in');
+            })
+            .catch(err => {
+                console.log(err);
+            });
     };
 
     return (

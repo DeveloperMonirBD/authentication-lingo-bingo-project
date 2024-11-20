@@ -1,6 +1,11 @@
+//motion
+import { motion } from 'framer-motion';
+//variants
+import { fadeIn } from '../variants';
+
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import vocabularies from '../../public/vocabularies.json'
+import vocabularies from '../../public/vocabularies.json';
 
 const LessonPage = () => {
     const { lesson_no } = useParams();
@@ -14,10 +19,20 @@ const LessonPage = () => {
 
     return (
         <div className="container mx-auto px-4 py-8">
-            <h1 className="text-6xl font-extrabold text-center text-brandPrimary mb-8">
+            <motion.h1
+                variants={fadeIn('up', 0.2)}
+                initial="hidden"
+                whileInView={'show'}
+                viewport={{ once: false, amount: 0.7 }}
+                className="text-6xl font-extrabold text-center text-brandPrimary mb-8">
                 Lesson - <span className="text-secondary">{lesson_no}</span>
-            </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            </motion.h1>
+            <motion.div
+                variants={fadeIn('left', 0.3)}
+                initial="hidden"
+                whileInView={'show'}
+                viewport={{ once: false, amount: 0.6 }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 {lessonVocabularies.map(vocab => (
                     <div
                         key={vocab.id}
@@ -28,9 +43,9 @@ const LessonPage = () => {
                         <p className="text-gray-600">Pronunciation: {vocab.pronunciation}</p>
                         <p className="text-gray-600">Meaning: {vocab.meaning}</p>
                         <p className="text-gray-600">Part of Speech: {vocab.part_of_speech}</p>
-                        <label htmlFor="my_modal_7" className="btn bg-brandPrimary text-white text-base hover:text-gray-900 mt-4">
+                        <button className="btn bg-brandPrimary text-white text-base hover:text-gray-900 mt-4" onClick={() => alert(`When to say: ${vocab.when_to_say}\nExample: ${vocab.example}`)}>
                             When to say
-                        </label>
+                        </button>
 
                         {/* Modal */}
                         <input type="checkbox" id="my_modal_7" className="modal-toggle" />
@@ -53,10 +68,16 @@ const LessonPage = () => {
                         </div>
                     </div>
                 ))}
-            </div>
-            <button className="btn button-secondary" onClick={() => navigate('/startLearning')}>
+            </motion.div>
+            <motion.button
+                variants={fadeIn('left', 0.3)}
+                initial="hidden"
+                whileInView={'show'}
+                viewport={{ once: false, amount: 0.6 }}
+                className="btn button-secondary"
+                onClick={() => navigate('/startLearning')}>
                 Back to Lessons
-            </button>
+            </motion.button>
         </div>
     );
 };

@@ -1,11 +1,21 @@
+//motion
+import { motion } from 'framer-motion';
+
+//variants
+import { fadeIn } from '../variants';
+
 import CountUp from 'react-countup';
 
 const CountUpComponent = () => {
     return (
         <div className="bg-gray-100 py-12 mt-20">
             <div className="container mx-auto px-4 text-center">
-                <h2 className="text-4xl font-bold mb-10 text-brandPrimary">Our Achievements</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <motion.h2 variants={fadeIn('up', 0.2)} initial="hidden" whileInView={'show'} viewport={{ once: false, amount: 0.7 }} className="text-4xl font-bold mb-14 text-brandPrimary">
+                    Our Achievements
+                </motion.h2>
+
+                <motion.div
+                    variants={fadeIn('right', 0.4)} initial="hidden" whileInView={'show'} viewport={{ once: false, amount: 0.7 }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div className="bg-white shadow-lg p-6 rounded-lg">
                         <h3 className="text-2xl font-semibold mb-2 text-gray-800">Users</h3>
                         <p className="text-4xl font-bold text-blue-500">
@@ -30,7 +40,7 @@ const CountUpComponent = () => {
                             <CountUp end={50} duration={3} />
                         </p>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
     );
