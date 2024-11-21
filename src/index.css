@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer components {
+@layer components {
     .animate-updown {
         animation-name: animate-updownAnim;
         animation-duration: 2s;
@@ -20,7 +20,7 @@
             transform: translateY(20px);
         }
     }
-} */
+}
 
 .button-primary{
     @apply px-7 py-2 bg-brandPrimary text-white rounded-lg hover:bg-neutralDGrey transition-all duration-300

@@ -19,7 +19,7 @@ const Banner = () => {
             <Carousel className="w-full mx-auto">
                 {/* banner1  */}
                 <div className=" container md:my-8 py-12 flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:px-20 lg:px-12">
-                    <div>
+                    <div className="animate-updown">
                         <img src={banner1} alt="" />
                     </div>
                     {/* hero text  */}
@@ -34,7 +34,7 @@ const Banner = () => {
 
                 {/* banner2  */}
                 <div className="container md:my-8 py-12 flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:px-20 lg:px-12">
-                    <div>
+                    <div className="animate-updown">
                         <img src={banner2} alt="" />
                     </div>
                     {/* hero text  */}
@@ -49,7 +49,7 @@ const Banner = () => {
 
                 {/* banner3  */}
                 <div className="container md:my-8 py-12 flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:px-20 lg:px-12">
-                    <div>
+                    <div className="animate-updown">
                         <img src={banner3} alt="" />
                     </div>
                     {/* hero text  */}

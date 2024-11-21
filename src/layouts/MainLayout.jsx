@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 const MainLayout = () => {
     return (
         <div className="font-poppins">
-            <header>
+            <header className="sticky top-0  bg-white bg-opacity-50 backdrop-blur-sm shadow-sm z-10">
                 {/* Navbar */}
                 <Navbar />
             </header>
