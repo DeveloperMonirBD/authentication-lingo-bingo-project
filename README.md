@@ -99,4 +99,4 @@ Explore the world of cutting-edge technology with Gadget Heaven and find the per
 
 -   Private Github Repo Link : https://github.com/programming-hero-web-course1/b10-a9-authentication-DeveloperMonirBD
 
--   Live link to the deployed project : https://lingo-bingo12.netlify.app/
+-   Live link to the deployed project : https://lingo-bingo-a69cd.web.app/

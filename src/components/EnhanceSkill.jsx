@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const EnhanceSkill = () => {
     return (
         <motion.div
-            variants={fadeIn('right', 0.6)}
+            variants={fadeIn('left', 0.6)}
             initial="hidden"
             whileInView={'show'}
             viewport={{ once: false, amount: 0.4 }}
