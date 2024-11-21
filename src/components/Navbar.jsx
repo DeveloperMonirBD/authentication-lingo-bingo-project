@@ -12,16 +12,16 @@ const Navbar = () => {
                 <NavLink to="/">Home</NavLink>
             </li>
             <li className="hover:text-brandPrimary">
-                <NavLink to="/startLearning">Start-learning</NavLink>
+                <NavLink to="/aboutUs">About Us</NavLink>
+            </li>
+            <li className="hover:text-brandPrimary">
+                <NavLink to="/startLearning">Start Learning</NavLink>
             </li>
             <li className="hover:text-brandPrimary">
                 <NavLink to="/tutorial">Tutorials</NavLink>
             </li>
             <li className="hover:text-brandPrimary">
-                <NavLink to="/myProfile">My-Profile</NavLink>
-            </li>
-            <li className="hover:text-brandPrimary">
-                <NavLink to="/aboutUs">About-Us</NavLink>
+                <NavLink to="/myProfile">My Profile</NavLink>
             </li>
         </>
     );
@@ -63,7 +63,7 @@ const Navbar = () => {
                             <img className="w-14 h-14 rounded-full object-cover object-center" src={user?.photoURL} alt="" />
                         </Link>
                     ) : (
-                        <img src={userIcon} alt="" />
+                        <img className='rounded-full' src={userIcon} alt="user" />
                     )}
                 </div>
 
