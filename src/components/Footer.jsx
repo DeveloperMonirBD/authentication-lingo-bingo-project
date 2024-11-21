@@ -33,28 +33,28 @@ const Footer = () => {
 
                 <nav className="text-base">
                     <h6 className="text-2xl font-bold">Useful Links</h6>
-                    <Link to="/" classNameName="link link-hover">
+                    <Link to="/" className="link link-hover">
                         Home
                     </Link>
-                    <Link to="/aboutUs" classNameName="link link-hover">
+                    <Link to="/aboutUs" className="link link-hover">
                         About Us
                     </Link>
-                    <Link to="/startLearning" classNameName="link link-hover">
+                    <Link to="/startLearning" className="link link-hover">
                         Start Learning
                     </Link>
-                    <Link to="/tutorial" classNameName="link link-hover">
+                    <Link to="/tutorial" className="link link-hover">
                         Tutorials
                     </Link>
-                    <Link to="/myProfile" classNameName="link link-hover">
+                    <Link to="/myProfile" className="link link-hover">
                         My Profile
                     </Link>
-                    <Link to="#footer" classNameName="link link-hover">
+                    <Link to="#footer" className="link link-hover">
                         Contact
                     </Link>
                 </nav>
 
-                <form className="text-base">
-                    <h6 className="text-2xl font-bold">Drop a Message</h6>
+                <form className="text-gray-900">
+                    <h6 className="text-2xl text-white font-bold">Drop a Message</h6>
                     <fieldset className="form-control w-80">
                         <label className="label"></label>
                         <div className=" space-y-4">
@@ -62,13 +62,16 @@ const Footer = () => {
                                 <input type="text" placeholder="username@site.com" className="input input-bordered join-item w-full" />
                             </div>
 
-                            <button className="btn text-lg bg-brandPrimary text-white hover:text-gray-900 join-item w-full">
-                                <Link to="/">Subscribe</Link>
+                            <button type='submit' className="btn text-lg bg-brandPrimary text-white hover:text-gray-900 join-item w-full">
+                                Subscribe
                             </button>
                         </div>
                     </fieldset>
                 </form>
             </footer>
+            <div className="text-center p-8 container mt-4 mx-auto border-t">
+                <p>Copyright © {new Date().getFullYear()} - All right reserved by Lingo-Bingo</p>
+            </div>
         </div>
     );
 };
