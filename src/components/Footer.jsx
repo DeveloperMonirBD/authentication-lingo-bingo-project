@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import instagram from '../assets/insta.png';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaInstalod, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
     return (
@@ -17,17 +16,17 @@ const Footer = () => {
                         <p>Openings hours: 9.00 AM - 5.00 PM</p>
                     </div>
                     <div className="flex gap-10 mt-4">
-                        <Link href="https://github.com/DeveloperMonirBD" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
+                        <Link href="https://github.com/DeveloperMonirBD" target="_blank" rel="noopener noreferrer" className="bg-brandPrimary  p-2 rounded-full hover:text-gray-300">
                             <FaGithub />
                         </Link>
-                        <Link to="https://www.linkedin.com/in/monirdeveloper/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
+                        <Link to="https://www.linkedin.com/in/monirdeveloper/" target="_blank" rel="noopener noreferrer" className="bg-brandPrimary  p-2 rounded-full hover:text-gray-300">
                             <FaLinkedin />
                         </Link>
-                        <Link to="https://x.com/Monir_Developer" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
+                        <Link to="https://x.com/Monir_Developer" target="_blank" rel="noopener noreferrer" className="bg-brandPrimary  p-2 rounded-full hover:text-gray-300">
                             <FaTwitter />
                         </Link>
-                        <Link to="https://www.instagram.com/monirdeveloper/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
-                            <img src={instagram} alt="" />
+                        <Link to="https://www.instagram.com/monirdeveloper/" target="_blank" rel="noopener noreferrer" className=" bg-brandPrimary  p-2 rounded-full hover:text-gray-300">
+                            <FaInstalod />
                         </Link>
                     </div>
                 </nav>

@@ -1,11 +1,21 @@
+//motion
+import { motion } from 'framer-motion';
+//variants
+import { fadeIn } from '../variants';
 
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const AboutUs = () => {
     return (
-        <div className="bg-[radial-gradient(50%_50%_at_50%_50%,#17956D_0%,#0F684C_100%)] min-h-screen py-10 flex justify-center items-center">
-            <div className="container mx-auto px-6 lg:px-20 max-h-[700px] overflow-y-auto">
+        <motion.div
+            variants={fadeIn('up', 0.2)}
+            initial="hidden"
+            whileInView={'show'}
+            viewport={{ once: false, amount: 0.7 }}
+
+            className="bg-[radial-gradient(50%_50%_at_50%_50%,#17956D_0%,#0F684C_100%)] min-h-screen py-10 flex justify-center items-center mb-10">
+            <div className="container mx-auto px-6 lg:px-12 max-h-[700px] overflow-y-auto">
                 <div className="text-center mb-12">
                     <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">About Me</h1>
                     <p className="text-base text-gray-200">Discover more about my journey, skills, and projects.</p>
@@ -63,7 +73,7 @@ const AboutUs = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
