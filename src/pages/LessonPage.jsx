@@ -83,7 +83,7 @@ const LessonPage = () => {
 
             {modalData && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                    <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+                    <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md mx-3">
                         <h2 className="text-2xl font-semibold text-gray-800">{modalData.word}</h2>
                         <p className="text-gray-600">Pronunciation: {modalData.pronunciation}</p>
                         <p className="text-gray-600">Meaning: {modalData.meaning}</p>

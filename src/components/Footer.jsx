@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
-import facebook from '../assets/facebook.png';
 import instagram from '../assets/insta.png';
-import twitter from '../assets/x-2 1.png';
-import youtube from '../assets/Youtube.png';
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <div id="footer" className=" bg-gray-800 text-white mt-20 px-3 py-20">
-            <footer className="footer p-10 max-w-7xl mx-auto lg:flex lg:justify-between items-start gap-10">
+        <div id="footer" className=" bg-gray-800 text-white px-3 py-20">
+            <footer className="footer p-10 container mx-auto lg:flex lg:justify-between items-start gap-10">
                 <nav>
                     <div>
                         <Link className=" text-brandPrimary text-4xl font-bold">Lingo Bingo</Link>
@@ -19,16 +17,16 @@ const Footer = () => {
                         <p>Openings hours: 9.00 AM - 5.00 PM</p>
                     </div>
                     <div className="flex gap-10 mt-4">
-                        <Link>
-                            <img src={facebook} alt="" />
+                        <Link href="https://github.com/DeveloperMonirBD" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
+                            <FaGithub />
                         </Link>
-                        <Link>
-                            <img src={twitter} alt="" />
+                        <Link to="https://www.linkedin.com/in/monirdeveloper/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
+                            <FaLinkedin />
                         </Link>
-                        <Link>
-                            <img src={youtube} alt="" />
+                        <Link to="https://x.com/Monir_Developer" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
+                            <FaTwitter />
                         </Link>
-                        <Link>
+                        <Link to="https://www.instagram.com/monirdeveloper/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
                             <img src={instagram} alt="" />
                         </Link>
                     </div>

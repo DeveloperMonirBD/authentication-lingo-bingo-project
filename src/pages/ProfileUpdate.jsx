@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from 'react';
+import { toast, Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 
@@ -22,8 +23,8 @@ const ProfileUpdate = () => {
         e.preventDefault();
         setSuccessMessage('');
         setErrorMessage('');
-        if (displayName.length < 3) {
-            setErrorMessage('Display name must be at least 3 characters long.');
+        if (displayName.length < 5) {
+            setErrorMessage('Display name must be at least 5 characters long.');
             return;
         }
         if (photoURL && !isValidURL(photoURL)) {
@@ -33,7 +34,7 @@ const ProfileUpdate = () => {
         try {
             await updateUserProfile({ displayName, photoURL });
             setUser(auth.currentUser);
-            setSuccessMessage('Profile updated successfully.');
+            toast.success('Profile updated successfully.');
             setTimeout(() => {
                 navigate('/myProfile');
             }, 2000);
@@ -58,7 +59,7 @@ const ProfileUpdate = () => {
                 <form onSubmit={handleSubmit} className="card-body">
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Display Name</span>
+                            <span className="label-text text-base">Display Name</span>
                         </label>
                         <input
                             type="text"
@@ -71,17 +72,18 @@ const ProfileUpdate = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Photo URL</span>
+                            <span className="label-text text-base">Photo URL</span>
                         </label>
                         <input type="text" value={photoURL} onChange={e => setPhotoURL(e.target.value)} placeholder="Enter your photo URL" className="input input-bordered bg-[#F3F3F3]" />
                     </div>
                     {successMessage && <p className="text-green-600 text-center mt-3">{successMessage}</p>}
                     {errorMessage && <p className="text-red-600 text-center mt-3">{errorMessage}</p>}
                     <div className="form-control mt-6">
-                        <button className="btn text-white text-base btn-neutral">Update Profile</button>
+                        <button className="btn text-white text-base bg-brandPrimary hover:text-gray-900">Update Profile</button>
                     </div>
                 </form>
             </div>
+            <Toaster position="top-right" reverseOrder={false} />
         </div>
     );
 };
